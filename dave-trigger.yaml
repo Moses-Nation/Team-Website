@@ -24,7 +24,7 @@
     id: Deploy Pod to Kubernetes
     args:
       - run
-      - --filename=dev.yaml
+      - --filename=dev-trigger.yaml
       - --image=gcr.io/$PROJECT_ID/Teamwebsite:latest
       - --location=us-east1-b
       - --cluster=cluster-1
