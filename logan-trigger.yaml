@@ -20,7 +20,7 @@ steps:
     - 'gcr.io/$PROJECT_ID/teamwebsite:latest'
       
       
-      # This step deploys the application in Kubernetes
+# This step deploys the application in Kubernetes
 - name: 'gcr.io/cloud-builders/gke-deploy'
   id: Deploy Pod to Kubernetes
   args:
