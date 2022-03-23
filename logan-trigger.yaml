@@ -25,7 +25,7 @@ steps:
   id: Deploy Pod to Kubernetes
   args:
     - run
-    - --filename=dev-trigger.yaml
+    - --filename=logan-trigger.yaml
     - --image=gcr.io/$PROJECT_ID/teamwebsite:latest
     - --location=us-east1-b
     - --cluster=cluster-1
