@@ -1,11 +1,12 @@
-      # This step builds the container image.
+steps:
+# This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
   args:
-  - 'build'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/Teamwebsite:latest'
-  - '.'
+    - 'build'
+    - '-t'
+    - 'gcr.io/$PROJECT_ID/Teamwebsite:latest'
+    - '.'
 
 # The above command runs: docker build -t gcr.io/$PROJECT_ID/constellationweb:latest .
 
@@ -15,16 +16,16 @@
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
   args:
-  - 'push'
-  - 'gcr.io/$PROJECT_ID/Teamwebsite:latest'
+    - 'push'
+    - 'gcr.io/$PROJECT_ID/Teamwebsite:latest'
       
       
       # This step deploys the application in Kubernetes
-  - name: 'gcr.io/cloud-builders/gke-deploy'
-    id: Deploy Pod to Kubernetes
-    args:
-      - run
-      - --filename=dev-trigger.yaml
-      - --image=gcr.io/$PROJECT_ID/Teamwebsite:latest
-      - --location=us-east1-b
-      - --cluster=cluster-1
+- name: 'gcr.io/cloud-builders/gke-deploy'
+  id: Deploy Pod to Kubernetes
+  args:
+    - run
+    - --filename=dev-trigger.yaml
+    - --image=gcr.io/$PROJECT_ID/Teamwebsite:latest
+    - --location=us-east1-b
+    - --cluster=cluster-1
