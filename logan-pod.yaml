@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: logan-bradford
-        image: gcr.io/enduring-piety/Teamwebsite:latest
+        image: gcr.io/enduring-piety/teamwebsite:latest
         ports:
         - containerPort: 3000
         resources:
