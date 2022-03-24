@@ -19,6 +19,8 @@
   "homepage": "https://github.com/Moses-Nation/Team-Website#readme",
   "dependencies": {
     "express": "^4.17.3",
-    "mocha": "^9.2.2"
+    "fetch": "^1.1.0",
+    "mocha": "^9.2.2",
+    "node": "^17.7.1"
   }
 }
