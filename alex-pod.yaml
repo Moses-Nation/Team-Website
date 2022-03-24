@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alexander-palmer
+spec:
+  replicas: 1
+  selector: 
+    matchLabels:
+      app: alexander-palmer
+  template:
+    metadata:
+      labels:
+        app: alexander-palmer
+    spec:
+      containers:
+      - name: alexander-palmer
+        image: nginx
+        ports: 
+        - containerPort: 3000
+        resources: 
+          limits:
+            cpu: 100m
+            memory: 250M
+          requests:
+            cpu: 100m
+            memory: 250M
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: alex-pod-service
+spec:
+  selector:
+      app: alex-palmer
+    type: LoadBalancer
+    ports:
+    - port: 80
+      targetport: 3000
