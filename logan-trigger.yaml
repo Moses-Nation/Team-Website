@@ -30,7 +30,6 @@ steps:
     - --location=us-central1-c
     - --cluster=cluster-1
 
-
 # This step runs the ConstellationTests Image 
 # The PROJECT_ID variable is automatically
 # replaced by Cloud Build.
