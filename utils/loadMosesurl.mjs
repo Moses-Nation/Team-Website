@@ -7,7 +7,7 @@ const loadMosesurl = async () => {
         headers: {'Content-Type':'application/json'}
     };
 
-    const apiResponse = await fetch('http://localhost:3000/moses', options);
+    const apiResponse = await fetch('http://108.59.87.120/moses', options);
     const testResponse = await apiResponse.text();
 
     return testResponse;
