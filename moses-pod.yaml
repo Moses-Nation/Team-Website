@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Moses-Mugarra
+  name: moses-mugarra
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Moses-Mugarra
+      app: moses-mugarra
   template:
     metadata:
       labels:
-        app: Moses-Mugarra
+        app: moses-mugarra
     spec:
       containers:
-      - name: Moses-Mugarra
+      - name: moses-mugarra
         image: gcr.io/enduring-piety/teamwebsite:latest
         ports:
         - containerPort: 3000
@@ -31,7 +31,7 @@ metadata:
   name: moses-mugarra-service
 spec:
   selector:
-    app: Moses-Mugarra
+    app: moses-mugarra
   type: LoadBalancer
   ports:
   - port: 80
