@@ -15,11 +15,11 @@
   - 'push'
   - 'gcr.io/$PROJECT_ID/Teamwebsite:latest'
       # This step deploys the application in Kubernetes
-  - name: 'gcr.io/cloud-builders/gke-deploy'
-    id: Deploy Pod to Kubernetes
-    args:
+- name: 'gcr.io/cloud-builders/gke-deploy'
+  id: Deploy Pod to Kubernetes
+  args:
       - run
       - --filename=Moses-trigger.yaml
       - --image=gcr.io/$PROJECT_ID/Teamwebsite:latest
       - --location=us-east1-b
-      - --cluster=cluster-1
+      - --cluster=cluster-1 
