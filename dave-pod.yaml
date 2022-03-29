@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: Dave-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: Dave-pod
+  template:
+    metadata:
+      labels:
+        app: Dave-pod
+    spec:
+      containers:
+        - name: Dave-pod
+          image: gcr.io/constellation-275522/teamwebsite
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: ".5"
+              memory: "500Mi"
+            requests:
+              cpu: ".25"
+              memory: "250Mi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: Dave-pod
+spec:
+  selector:
+    app: myapp
+  ports:
+  - port: 8080
+    targetPort: 3000 
