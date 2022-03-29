@@ -1,25 +1,31 @@
+steps:
+# This step builds the container image.
 - name: 'gcr.io/cloud-builders/docker'
   id: Build
   args:
-  - 'build'
-  - '-t'
-  - 'gcr.io/$PROJECT_ID/Teamwebsite:latest'
-  - '.'
+    - 'build'
+    - '-t'
+    - 'gcr.io/$PROJECT_ID/teamwebsite:latest'
+    - '.'
+
 # The above command runs: docker build -t gcr.io/$PROJECT_ID/constellationweb:latest .
+
 # This step pushes the image to Container Registry
 # The PROJECT_ID and SHORT_SHA variables are automatically
 # replaced by Cloud Build.
 - name: 'gcr.io/cloud-builders/docker'
   id: Push
   args:
-  - 'push'
-  - 'gcr.io/$PROJECT_ID/Teamwebsite:latest'
-      # This step deploys the application in Kubernetes
+    - 'push'
+    - 'gcr.io/$PROJECT_ID/teamwebsite:latest'
+      
+      
+# This step deploys the application in Kubernetes
 - name: 'gcr.io/cloud-builders/gke-deploy'
   id: Deploy Pod to Kubernetes
   args:
-      - run
-      - --filename=Moses-trigger.yaml
-      - --image=gcr.io/$PROJECT_ID/Teamwebsite:latest
-      - --location=us-east1-b
-      - --cluster=cluster-1 
+    - run
+    - --filename=moses-pod.yaml
+    - --image=gcr.io/$PROJECT_ID/teamwebsite:latest
+    - --location=us-central1-c
+    - --cluster=cluster-1
