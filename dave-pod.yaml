@@ -37,7 +37,7 @@ metadata:
   name: dave-pod
 spec:
   selector:
-    app: TeamWebsiteApp
+    app: dave-pod
   type: LoadBalancer
   ports:
   - port: 80
