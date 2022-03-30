@@ -14,4 +14,4 @@ const daveurl = async ()=>{
 
 };
 
-export default loaddaveurl;
+export default daveurl;
