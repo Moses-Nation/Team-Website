@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Dave-pod
+  name: dave-pod
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: Dave-pod
+      app: dave-pod
   template:
     metadata:
       labels:
-        app: Dave-pod
+        app: dave-pod
     spec:
       containers:
-        - name: Dave-pod
+        - name: dave-pod
           image: gcr.io/constellation-275522/teamwebsite
           ports:
             - containerPort: 3000
@@ -34,10 +34,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: Dave-pod
+  name: dave-pod
 spec:
   selector:
     app: myapp
   ports:
-  - port: 8080
+  - port: 80
     targetPort: 3000 
