@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dave-pod
-          image: gcr.io/constellation-275522/teamwebsite
+          image: gcr.io/enduring-piety/teamwebsite:latest
           ports:
             - containerPort: 3000
           resources:
