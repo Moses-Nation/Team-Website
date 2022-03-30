@@ -37,7 +37,8 @@ metadata:
   name: dave-pod
 spec:
   selector:
-    app: myapp
+    app: TeamWebsiteApp
+  type: LoadBalancer
   ports:
   - port: 80
-    targetPort: 3000 
+    targetPort: 3000
