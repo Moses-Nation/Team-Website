@@ -7,7 +7,7 @@ const loadolaurl = async () => {
         headers: {'Content-Type':'application/json'}
     };
 
-    const apiResponse = await fetch('http://108.59.87.120/moses', options);
+    const apiResponse = await fetch('http://35.223.19.89/ola', options);
     const testResponse = await apiResponse.text();
 
     return testResponse;
