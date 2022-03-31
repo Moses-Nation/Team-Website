@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dave-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dave-pod
+  template:
+    metadata:
+      labels:
+        app: dave-pod
+    spec:
+      containers:
+        - name: dave-pod
+          image: gcr.io/enduring-piety/teamwebsite:latest
+          ports:
+            - containerPort: 3000
+          resources:
+            limits:
+              cpu: ".5"
+              memory: "500Mi"
+            requests:
+              cpu: ".25"
+              memory: "250Mi"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dave-pod
+spec:
+  selector:
+    app: dave-pod
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
