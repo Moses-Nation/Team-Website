@@ -17,7 +17,7 @@ steps:
   id: Push
   args:
     - 'push'
-    - 'gcr.io/$PROJECT_ID/teamwebsite:latest'
+    - 'gcr.io/enduring-piety/teamwebsite:latest'
       
       
 # This step deploys the application in Kubernetes
@@ -26,7 +26,7 @@ steps:
   args:
     - run
     - --filename=moses-pod.yaml
-    - --image=gcr.io/$PROJECT_ID/teamwebsite:latest
+    - --image=gcr.io/enduring-piety/teamwebsite:latest
     - --location=us-central1-c
     - --cluster=cluster-1
 
@@ -39,7 +39,7 @@ steps:
   - 'NODE_ENV=development'
   args:
   - 'run'
-  - 'gcr.io/$PROJECT_ID/constellationautotest:latest'
+  - 'gcr.io/enduring-piety/teamwebsite:latest'
   - 'npm'
   - 'run'
   - 'test'
