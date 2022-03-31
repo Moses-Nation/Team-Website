@@ -1,0 +1,46 @@
+steps:
+# This step builds the container image.
+- name: 'gcr.io/cloud-builders/docker'
+  id: Build
+  args:
+    - 'build'
+    - '-t'
+    - 'gcr.io/$PROJECT_ID/teamwebsite:latest'
+    - '.'
+
+# The above command runs: docker build -t gcr.io/$PROJECT_ID/constellationweb:latest .
+
+# This step pushes the image to Container Registry
+# The PROJECT_ID and SHORT_SHA variables are automatically
+# replaced by Cloud Build.
+- name: 'gcr.io/cloud-builders/docker'
+  id: Push
+  args:
+    - 'push'
+    - 'gcr.io/enduring-piety/teamwebsite:latest'
+      
+      
+# This step deploys the application in Kubernetes
+- name: 'gcr.io/cloud-builders/gke-deploy'
+  id: Deploy Pod to Kubernetes
+  args:
+    - run
+    - --filename=ola
+    -pod.yaml
+    - --image=gcr.io/enduring-piety/teamwebsite:latest
+    - --location=us-central1-c
+    - --cluster=cluster-1
+
+# This step runs the ConstellationTests Image 
+# The PROJECT_ID variable is automatically
+# replaced by Cloud Build.
+- name: 'gcr.io/cloud-builders/docker'
+  id: Test
+  env:
+  - 'NODE_ENV=development'
+  args:
+  - 'run'
+  - 'gcr.io/enduring-piety/teamwebsite:latest'
+  - 'npm'
+  - 'run'
+  - 'test'

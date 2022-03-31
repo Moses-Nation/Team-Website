@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ola
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ola
+  template:
+    metadata:
+      labels:
+        app: ola
+    spec:
+      containers:
+      - name: ola
+        image: gcr.io/enduring-piety/teamwebsite:latest
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 125M
+          requests:
+            cpu: 100m
+            memory: 100M
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ola-service
+spec:
+  selector:
+    app: ola
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
