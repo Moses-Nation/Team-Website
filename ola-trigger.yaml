@@ -25,8 +25,7 @@ steps:
   id: Deploy Pod to Kubernetes
   args:
     - run
-    - --filename=ola
-    -pod.yaml
+    - --filename=ola-pod.yaml
     - --image=gcr.io/enduring-piety/teamwebsite:latest
     - --location=us-central1-c
     - --cluster=cluster-1
