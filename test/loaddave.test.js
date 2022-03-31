@@ -5,5 +5,5 @@ it("Tests Dave URL Endpoint", async ()=>{
 
     const urlResponse = await loaddaveurl();
     console.log("URL Response:")+urlResponse;
-    assert.equal(urlResponse, "Hello Dave");
+    assert.equal(urlResponse, "Hello Dave!");
 });
