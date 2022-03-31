@@ -31,7 +31,7 @@ metadata:
   name: alex-pod-service
 spec:
   selector:
-      app: alex-palmer
+      app: alexander-palmer
   type: LoadBalancer
   ports:
   - port: 80
