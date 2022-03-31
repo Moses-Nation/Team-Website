@@ -7,7 +7,7 @@ const loadloganurl = async () =>{
         headers: {'Content-Type':'application/json'}
     };
 
-    const apiResponse = await fetch('http://localhost:3000/logan', options);
+    const apiResponse = await fetch('http://35.184.229.251/logan', options);
     const testResponse = await apiResponse.text();
     //just a comment
     return testResponse;

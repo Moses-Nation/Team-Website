@@ -7,7 +7,7 @@ const daveurl = async ()=>{
         headers: {'Content-Type':'aplication/json'}
     };
 
-    const apiResponse = await fetch ('http://localhost:3000/dave', options)
+    const apiResponse = await fetch ('http://34.68.210.164/dave', options)
     const testResponse = await apiResponse.text();
 
     return testResponse;
